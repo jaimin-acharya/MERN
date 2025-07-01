@@ -1,7 +1,7 @@
 # 🌟 MERN Blog App
 
 **A full-stack blog application built with the MERN stack (MongoDB, Express, React, Node.js).**
-
+---
 ## 🚀 Features
 
 * User authentication: register, login, logout
