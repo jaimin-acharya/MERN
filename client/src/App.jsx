@@ -13,6 +13,7 @@ import { AdminLayout } from "./components/Layout/AdminLayout";
 import { AdminUsers } from "./pages/AdminUsers";
 import { AdminContacts } from "./pages/AdminContacts";
 import { Routes, Route } from "react-router-dom";
+import { AdminUpdate } from "./pages/AdminUpdate";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="admin" element={<AdminLayout />}>
             <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContacts />} />
+            <Route path="users/:id/edit" element={<AdminUpdate />} />
           </Route>
 
           <Route path="*" element={<ErrorPage />} />

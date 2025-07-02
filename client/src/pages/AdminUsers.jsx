@@ -53,7 +53,7 @@ export const AdminUsers = () => {
     <>
       <section className="admin-users-section">
         <div className="flex flex-center">
-          <h1>Website Users Data </h1>
+          <h1>Users Data </h1>
         </div>
 
         <div className="container admin-users">

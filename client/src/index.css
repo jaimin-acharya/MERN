@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -511,18 +512,22 @@ a.active {
 }
 
 /* admin  */
-.admin-users,
+/* .admin-users,
 .admin-user {
-  /* border: 0.2rem solid var(--btn-color); */
-}
+  border: 0.2rem solid var(--btn-color);
+  display: grid;
+  place-items: center;
+} */
 
 .admin-users {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
 th {
+
   font-size: 1.8rem;
   letter-spacing: 0.1rem;
   padding: 3rem;
@@ -541,7 +546,9 @@ td {
   /* border: 0.1rem solid red; */
 }
 
+
 table {
+
   background: #fff;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
   border-collapse: collapse;
@@ -558,7 +565,7 @@ table {
 
 .admin-contacts-section tr {
   display: grid;
-  grid-template-columns: repeat(4, minmax(10rem, 1fr));
+  grid-template-columns: repeat(2, minmax(10rem, 1fr));
   align-items: center;
   box-shadow: 0 0.3rem 0 grey;
   margin-bottom: 10px;
@@ -571,8 +578,9 @@ table {
 }
 
 body tr {
-  display: grid;
+  /* display: flex; */
   grid-template-columns: repeat(5, minmax(10rem, 1fr));
+  justify-content: space-around;
   align-items: center;
   box-shadow: 0 0.3rem 0 grey;
   margin-bottom: 10px;
@@ -637,25 +645,18 @@ body tr {
 /** -----------------------
   ** media query section css
   ** -------------------------  */
-
+/* Responsive Media Queries */
 @media (width <= 998px) {
   .grid-two-cols {
     grid-template-columns: 1fr;
   }
 
-  .section-services {
-    & .grid-three-cols {
-      grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-    }
+  .section-services .grid-three-cols {
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   }
 
-  .section-registration {
-    & .container {
-      & .reg-img img {
-        width: 60%;
-        height: auto;
-      }
-    }
+  .section-registration .reg-img img {
+    width: 60%;
   }
 }
 
@@ -664,20 +665,12 @@ body tr {
     font-size: 56.25%;
   }
 
-  .section-registration {
-    & .container {
-      & .reg-img img {
-        width: 50%;
-        height: auto;
-      }
-    }
+  .section-registration .reg-img img {
+    width: 50%;
+  }
 
-    & .registration-form {
-      & input {
-        width: 100%;
-        padding: 0.6rem 0.6rem;
-      }
-    }
+  .section-registration input {
+    width: 100%;
   }
 }
 

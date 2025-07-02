@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
+
 import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
@@ -9,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
   const [services, setServices] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const authorizationToken = `Bearer ${token}`;
 
   //! LOCAL API URLS
@@ -35,6 +37,7 @@ export const AuthProvider = ({ children }) => {
 
   const userAuthentication = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch(USER_URL, {
         method: "GET",
         headers: {
@@ -45,6 +48,7 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         // console.log("user data ", data.userData);
         setUser(data.userData);
+        setIsLoading(false);
       } else {
         console.error("Error fetching user data");
       }
@@ -93,6 +97,7 @@ export const AuthProvider = ({ children }) => {
           user,
           services,
           authorizationToken,
+          isLoading
         }}
       >
         {children}
