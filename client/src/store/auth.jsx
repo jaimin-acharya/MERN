@@ -14,11 +14,12 @@ export const AuthProvider = ({ children }) => {
   const authorizationToken = `Bearer ${token}`;
 
   //! LOCAL API URLS
-  const REGISRATION_URL = "http://localhost:5000/api/auth/register";
-  const LOGIN_URL = "http://localhost:5000/api/auth/login";
-  const CONTACT_URL = "http://localhost:5000/api/form/contact";
-  const USER_URL = "http://localhost:5000/api/auth/user";
-  const SERVICE_URL = "http://localhost:5000/api/data/service";
+  // const REGISRATION_URL = "http://localhost:5000/api/auth/register";
+  // const LOGIN_URL = "http://localhost:5000/api/auth/login";
+  // const CONTACT_URL = "http://localhost:5000/api/form/contact";
+  // const USER_URL = "http://localhost:5000/api/auth/user";
+  // const SERVICE_URL = "http://localhost:5000/api/data/service";
+  const API = import.meta.env.VITE_APP_URI_API;
 
   const storeTokenInLS = (serverToken) => {
     setToken(serverToken);
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
   const userAuthentication = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(USER_URL, {
+      const response = await fetch(`${API}/auth/user`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -64,7 +65,7 @@ export const AuthProvider = ({ children }) => {
   //? TO FETCH SERVICES DATA FROM DATABASE
   const getServiceData = async () => {
     try {
-      const response = await fetch(SERVICE_URL, { method: "GET" });
+      const response = await fetch(`${API}/api/data/service`, { method: "GET" });
 
       if (response.ok) {
         const data = await response.json();
@@ -89,14 +90,10 @@ export const AuthProvider = ({ children }) => {
           isLoggedIn,
           storeTokenInLS,
           LogoutUser,
-          REGISRATION_URL,
-          LOGIN_URL,
-          CONTACT_URL,
-          USER_URL,
-          SERVICE_URL,
           user,
           services,
           authorizationToken,
+          API,
           isLoading
         }}
       >

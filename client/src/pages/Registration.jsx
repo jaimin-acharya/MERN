@@ -12,8 +12,8 @@ export const Registration = () => {
   });
 
   const navigate = useNavigate();
-  const { REGISRATION_URL } = useAuth();
-  const { storeTokenInLS } = useAuth();
+  const { API, storeTokenInLS } = useAuth();
+
   //! HANDLING THE INPUT VALUES
 
   // DESTRUCTURUNG THE VALUES
@@ -35,7 +35,7 @@ export const Registration = () => {
     // console.log(user);
 
     try {
-      const response = await fetch(REGISRATION_URL, {
+      const response = await fetch(`${API}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

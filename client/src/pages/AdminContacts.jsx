@@ -5,11 +5,11 @@ import { toast } from "react-toastify";
 
 export const AdminContacts = () => {
   const [contact, setContact] = useState([]);
-  const { authorizationToken } = useAuth();
-   
+  const { authorizationToken, API } = useAuth();
+
   const getAllContactsData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin/contacts", {
+      const response = await fetch(`${API}/api/admin/contacts`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export const AdminContacts = () => {
   const deleteContact = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/contacts/delete/${id}`,
+        `${API}/api/admin/contacts/delete/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -72,7 +72,11 @@ export const AdminContacts = () => {
                   <td>{curContact.username}</td>
                   <td>{curContact.email}</td>
                   <td>{curContact.message}</td>
-                  <td><button onClick={() => deleteContact(curContact._id)}>Delete</button></td>
+                  <td>
+                    <button onClick={() => deleteContact(curContact._id)}>
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               );
             })}

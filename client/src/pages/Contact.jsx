@@ -13,7 +13,7 @@ export const Contact = () => {
 
   const [userData, setUserData] = useState(true);
 
-  const { user, CONTACT_URL } = useAuth();
+  const { user, API } = useAuth();
 
   if (userData && user) {
     setContact({
@@ -41,7 +41,7 @@ export const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(CONTACT_URL, {
+      const response = await fetch(`${API}/api/form/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export const Contact = () => {
         </div>
         <section className="mb-3 container">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.480612301221!2d72.54614427600842!3d23.042835115570405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8585d9d5da33%3A0xe87e72f68c0350cc!2sSamsung%20Experience%20Store%20-%20Vtech%20Nxtgen%20Retails%20LLP%20-%20Navrangpura!5e0!3m2!1sen!2sin!4v1740819759306!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235013.74843700725!2d72.41493388340731!3d23.02047409694801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1751472272234!5m2!1sen!2sin"
             width="100%"
             height="450"
             allowFullScreen
